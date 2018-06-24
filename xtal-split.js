@@ -38,9 +38,10 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     connectedCallback() {
         this._connected = true;
         this._upgradeProperties(['search', 'textContent']);
+        this.onPropsChange();
     }
     onPropsChange() {
-        if (this._textContent)
+        if (!this._connected || !this._textContent)
             return;
         if (!this._search) {
             this.innerText = this._textContent;
@@ -63,6 +64,6 @@ export class XtalSplit extends XtallatX(HTMLElement) {
         }
     }
 }
-if (customElements.get(XtalSplit.is))
+if (!customElements.get(XtalSplit.is))
     customElements.define(XtalSplit.is, XtalSplit);
 //# sourceMappingURL=xtal-split.js.map

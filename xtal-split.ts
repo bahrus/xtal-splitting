@@ -47,9 +47,10 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     connectedCallback(){
         this._connected = true;
         this._upgradeProperties(['search', 'textContent']);
+        this.onPropsChange();
     }
     onPropsChange() {
-        if (this._textContent) return;
+        if (!this._connected || !this._textContent) return;
         if (!this._search) {
             this.innerText = this._textContent;
         } else {
@@ -72,4 +73,4 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     }
 }
 
-if(customElements.get(XtalSplit.is)) customElements.define(XtalSplit.is, XtalSplit);
+if(!customElements.get(XtalSplit.is)) customElements.define(XtalSplit.is, XtalSplit);
