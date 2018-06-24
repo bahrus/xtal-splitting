@@ -1,0 +1,19 @@
+{
+  "name": "xtal-splitting",
+  "description": "Web components that can do the splits ",
+  "main": "xtal-splitting.js",
+  "dependencies": {
+    "xtal-latx": "^0.0.13"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.0",
+    "jiife": "^0.0.2",
+    "@polymer/polymer": "^3.0.0"
+  },
+  "version": "0.0.0",
+  "repository": "https://github.com/bahrus/xtal-splitting",
+  "author": "bahrus <anderson.bruce.b@gmail.com>",
+  "license": "MIT"
+}
