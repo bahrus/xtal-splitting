@@ -47,15 +47,16 @@ export class XtalSplit extends XtallatX(HTMLElement) {
         }
         else {
             const split = this._textContent.split(new RegExp(this._search, 'i'));
+            const textContentLength = this._textContent.length;
             const tokenCount = split.length;
             const len = this._search.length;
             let iPos = 0;
             let text = '';
-            //console.log(split);
+            //console.log(split); 
             split.forEach((token, idx) => {
                 iPos += token.length;
                 text += token;
-                if (idx < tokenCount)
+                if (idx < tokenCount && iPos < textContentLength)
                     text += "<span class='match'>" + this._textContent.substr(iPos, len) + "</span>";
                 iPos += len;
             });
