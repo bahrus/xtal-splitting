@@ -1,6 +1,7 @@
 import { XtallatX } from 'xtal-latx/xtal-latx.js';
 const search = 'search';
 const text_content = 'text-content';
+const reSanitize = /(<([^>]+)>)/ig;
 export class XtalSplit extends XtallatX(HTMLElement) {
     static get is() { return 'xtal-split'; }
     static get observedAttributes() {
@@ -31,9 +32,7 @@ export class XtalSplit extends XtallatX(HTMLElement) {
         this.attr(text_content, val);
     }
     strip(html) {
-        var tmp = document.createElement("DIV");
-        tmp.innerHTML = html;
-        return tmp.textContent || tmp.innerText || "";
+        return html.replace(reSanitize, '');
     }
     connectedCallback() {
         this._connected = true;
