@@ -1,7 +1,9 @@
 import {XtallatX} from 'xtal-latx/xtal-latx.js';
+import {define} from 'xtal-latx/define.js';
+
 const search = 'search';
 const text_content = 'text-content';
-const reSanitize = /(<([^>]+)>)/ig;
+const re = /(<([^>]+)>)/ig;
 
 /**
  * `xtal-split`
@@ -27,7 +29,6 @@ export class XtalSplit extends XtallatX(HTMLElement) {
         }
         this.onPropsChange();
     }
-    _originalText: string;
 
     _search: string;
     get search() {
@@ -47,7 +48,7 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     }
 
     strip(html) {
-        return html.replace(reSanitize, '');
+        return html.replace(re, '');
     }
 
 
@@ -83,5 +84,4 @@ export class XtalSplit extends XtallatX(HTMLElement) {
 
     }
 }
-
-if(!customElements.get(XtalSplit.is)) customElements.define(XtalSplit.is, XtalSplit);
+define(XtalSplit)

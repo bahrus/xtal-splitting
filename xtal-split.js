@@ -1,7 +1,8 @@
 import { XtallatX } from 'xtal-latx/xtal-latx.js';
+import { define } from 'xtal-latx/define.js';
 const search = 'search';
 const text_content = 'text-content';
-const reSanitize = /(<([^>]+)>)/ig;
+const re = /(<([^>]+)>)/ig;
 /**
  * `xtal-split`
  *  Split property textContent with search property
@@ -40,7 +41,7 @@ export class XtalSplit extends XtallatX(HTMLElement) {
         this.attr(text_content, val);
     }
     strip(html) {
-        return html.replace(reSanitize, '');
+        return html.replace(re, '');
     }
     connectedCallback() {
         this._connected = true;
@@ -74,6 +75,5 @@ export class XtalSplit extends XtallatX(HTMLElement) {
         }
     }
 }
-if (!customElements.get(XtalSplit.is))
-    customElements.define(XtalSplit.is, XtalSplit);
+define(XtalSplit);
 //# sourceMappingURL=xtal-split.js.map

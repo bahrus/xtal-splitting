@@ -1,7 +1,15 @@
 
     //@ts-check
     (function () {
-    const disabled = 'disabled';
+    function define(custEl) {
+    let tagName = custEl.is;
+    if (customElements.get(tagName)) {
+        console.warn('Already registered ' + tagName);
+        return;
+    }
+    customElements.define(tagName, custEl);
+}
+const disabled = 'disabled';
 function XtallatX(superClass) {
     return class extends superClass {
         constructor() {
@@ -66,7 +74,7 @@ function XtallatX(superClass) {
 }
 const search = 'search';
 const text_content = 'text-content';
-const reSanitize = /(<([^>]+)>)/ig;
+const re = /(<([^>]+)>)/ig;
 /**
  * `xtal-split`
  *  Split property textContent with search property
@@ -105,7 +113,7 @@ class XtalSplit extends XtallatX(HTMLElement) {
         this.attr(text_content, val);
     }
     strip(html) {
-        return html.replace(reSanitize, '');
+        return html.replace(re, '');
     }
     connectedCallback() {
         this._connected = true;
@@ -139,7 +147,6 @@ class XtalSplit extends XtallatX(HTMLElement) {
         }
     }
 }
-if (!customElements.get(XtalSplit.is))
-    customElements.define(XtalSplit.is, XtalSplit);
+define(XtalSplit);
     })();  
         
