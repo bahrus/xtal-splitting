@@ -60,7 +60,7 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     }
     onPropsChange() {
         if (!this._connected) return;
-        if(!this._textContent) this._textContent = this.innerText;
+        if(!this._textContent) this.textContent = this.innerText;
         if (!this._search) {
             this.innerText = this._textContent;
         } else {
