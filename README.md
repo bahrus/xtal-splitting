@@ -15,7 +15,7 @@ xtal-splitting.js is ~1kb minified and gzipped. It takes a search string, and sp
 <custom-element-demo>
   <template>
     <div>
-        <!-- For re(edge)tro browsers -->
+        <!-- For re(dge)tro browsers -->
         <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
         <!-- End re(edge)tro browser support-->
         <script type="module" src="https://unpkg.com/p-d.p-u@0.0.66/p-d.p-u.js"></script>
