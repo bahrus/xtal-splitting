@@ -2,6 +2,15 @@ import {XtallatX} from 'xtal-latx/xtal-latx.js';
 const search = 'search';
 const text_content = 'text-content';
 const reSanitize = /(<([^>]+)>)/ig;
+
+/**
+ * `xtal-split`
+ *  Split property textContent with search property 
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */
 export class XtalSplit extends XtallatX(HTMLElement) {
     static get is(){return 'xtal-split';}
     static get observedAttributes(){
