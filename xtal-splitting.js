@@ -4,6 +4,10 @@
     const disabled = 'disabled';
 function XtallatX(superClass) {
     return class extends superClass {
+        constructor() {
+            super(...arguments);
+            this._evCount = {};
+        }
         static get observedAttributes() {
             return [disabled];
         }
@@ -14,12 +18,22 @@ function XtallatX(superClass) {
             this.attr(disabled, val, '');
         }
         attr(name, val, trueVal) {
-            if (val) {
-                this.setAttribute(name, trueVal || val);
+            const setOrRemove = val ? 'set' : 'remove';
+            this[setOrRemove + 'Attribute'](name, trueVal || val);
+        }
+        to$(number) {
+            const mod = number % 2;
+            return (number - mod) / 2 + '-' + mod;
+        }
+        incAttr(name) {
+            const ec = this._evCount;
+            if (name in ec) {
+                ec[name]++;
             }
             else {
-                this.removeAttribute(name);
+                ec[name] = 0;
             }
+            this.attr('data-' + name, this.to$(ec[name]));
         }
         attributeChangedCallback(name, oldVal, newVal) {
             switch (name) {
@@ -29,12 +43,14 @@ function XtallatX(superClass) {
             }
         }
         de(name, detail) {
-            const newEvent = new CustomEvent(name + '-changed', {
+            const eventName = name + '-changed';
+            const newEvent = new CustomEvent(eventName, {
                 detail: detail,
                 bubbles: true,
                 composed: false,
             });
             this.dispatchEvent(newEvent);
+            this.incAttr(eventName);
             return newEvent;
         }
         _upgradeProperties(props) {
@@ -48,9 +64,9 @@ function XtallatX(superClass) {
         }
     };
 }
-//# sourceMappingURL=xtal-latx.js.map
 const search = 'search';
 const text_content = 'text-content';
+const reSanitize = /(<([^>]+)>)/ig;
 class XtalSplit extends XtallatX(HTMLElement) {
     static get is() { return 'xtal-split'; }
     static get observedAttributes() {
@@ -81,9 +97,7 @@ class XtalSplit extends XtallatX(HTMLElement) {
         this.attr(text_content, val);
     }
     strip(html) {
-        var tmp = document.createElement("DIV");
-        tmp.innerHTML = html;
-        return tmp.textContent || tmp.innerText || "";
+        return html.replace(reSanitize, '');
     }
     connectedCallback() {
         this._connected = true;
@@ -98,15 +112,16 @@ class XtalSplit extends XtallatX(HTMLElement) {
         }
         else {
             const split = this._textContent.split(new RegExp(this._search, 'i'));
+            const textContentLength = this._textContent.length;
             const tokenCount = split.length;
             const len = this._search.length;
             let iPos = 0;
             let text = '';
-            //console.log(split);
+            //console.log(split); 
             split.forEach((token, idx) => {
                 iPos += token.length;
                 text += token;
-                if (idx < tokenCount)
+                if (idx < tokenCount && iPos < textContentLength)
                     text += "<span class='match'>" + this._textContent.substr(iPos, len) + "</span>";
                 iPos += len;
             });
@@ -116,6 +131,5 @@ class XtalSplit extends XtallatX(HTMLElement) {
 }
 if (!customElements.get(XtalSplit.is))
     customElements.define(XtalSplit.is, XtalSplit);
-//# sourceMappingURL=xtal-split.js.map
     })();  
         
