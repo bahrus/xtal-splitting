@@ -14,8 +14,13 @@ xtal-splitting.js is ~1kb minified and gzipped. It takes a search string, and sp
 ```
 <custom-element-demo>
   <template>
-    <script type="module" src="https://unpkg.com/xtal-splitting@0.0.1/xtal-splitting.js"></script>
-    <script src="https://unpkg.com/p-d.p-u@0.0.16/p-d.p-d-x.p-u.js"></script>
+    <div>
+        <!-- For re(edge)tro browsers -->
+        <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <!-- End re(edge)tro browser support-->
+        <script type="module" src="https://unpkg.com/p-d.p-u@0.0.66/p-d.p-u.js"></script>
+        <script type="module" src="https://unpkg.com/xtal-splitting@0.0.4/xtal-splitting.js"></script>
+      <h3>Basic xtal-splitting demo</h3>
       <style>
         .match{
           background-color: yellowgreen;
@@ -25,6 +30,7 @@ xtal-splitting.js is ~1kb minified and gzipped. It takes a search string, and sp
       <input type="text"  value="ca">
       <p-d on="input" to="{search}"></p-d>
       <xtal-split text-content="supercalifragilisticexpialidocious"></xtal-split>
+    </div>
   </template>
 </custom-element-demo>
 ```
