@@ -12,7 +12,7 @@
     "tape": "^4.9.1",
     "xtal-test": "0.0.8"
   },
-  "version": "0.0.6",
+  "version": "0.0.7",
   "repository": "https://github.com/bahrus/xtal-splitting",
   "author": "bahrus <anderson.bruce.b@gmail.com>",
   "license": "MIT",
