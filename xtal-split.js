@@ -48,8 +48,10 @@ export class XtalSplit extends XtallatX(HTMLElement) {
         this.onPropsChange();
     }
     onPropsChange() {
-        if (!this._connected || !this._textContent)
+        if (!this._connected)
             return;
+        if (!this._textContent)
+            this._textContent = this.innerText;
         if (!this._search) {
             this.innerText = this._textContent;
         }
