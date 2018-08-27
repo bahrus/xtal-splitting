@@ -19,22 +19,22 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     attributeChangedCallback(name, oldVal, newVal) {
         switch (name) {
             case search:
-                this._search = newVal;
+                this._s = newVal;
                 break;
             case text_content:
-                this._textContent = newVal ? this.strip(newVal) : '';
+                this._t = newVal ? this.strip(newVal) : '';
                 break;
         }
         this.onPropsChange();
     }
     get search() {
-        return this._search;
+        return this._s;
     }
     set search(val) {
         this.attr(search, val);
     }
     get textContent() {
-        return this._textContent;
+        return this._t;
     }
     set textContent(val) {
         //this._textContent = this.strip(val);
@@ -51,25 +51,25 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     onPropsChange() {
         if (!this._connected)
             return;
-        if (!this._textContent)
-            this.textContent = this.innerText;
-        if (!this._search) {
-            this.innerText = this._textContent;
+        if (!this._t)
+            this.textContent = this.strip(this.innerText);
+        if (!this._s) {
+            this.innerText = this._t;
         }
         else {
-            const split = this._textContent.split(new RegExp(this._search, 'i'));
-            const textContentLength = this._textContent.length;
-            const tokenCount = split.length;
-            const len = this._search.length;
-            let iPos = 0;
+            const split = this._t.split(new RegExp(this._s, 'i'));
+            const tcL = this._t.length; //token content length;
+            const tc = split.length;
+            const len = this._s.length;
+            let iP = 0;
             let text = '';
             //console.log(split); 
-            split.forEach((token, idx) => {
-                iPos += token.length;
-                text += token;
-                if (idx < tokenCount && iPos < textContentLength)
-                    text += "<span class='match'>" + this._textContent.substr(iPos, len) + "</span>";
-                iPos += len;
+            split.forEach((t, i) => {
+                iP += t.length;
+                text += t;
+                if (i < tc && iP < tcL)
+                    text += "<span class='match'>" + this._t.substr(iP, len) + "</span>";
+                iP += len;
             });
             this.innerHTML = text;
         }
