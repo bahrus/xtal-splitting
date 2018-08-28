@@ -4,11 +4,12 @@ const test = require('tape');
 import { Page } from "puppeteer"; //typescript
 import { Test } from "tape";
 async function customTests(page: Page) {
+    await page.waitFor(1000);
     const textContent = await page.$eval('xtal-split', (c: any) => c.innerHTML);
     const TapeTestRunner = {
         test: test
     } as Test;
-    TapeTestRunner.test('testing dev.html', (t: any) => {
+    TapeTestRunner.test('testing dev.html', t => {
         t.equal(textContent, 'super<span class="match">ca</span>lifragilisticexpialidocious');
         t.end();
     });
