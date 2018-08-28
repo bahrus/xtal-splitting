@@ -94,7 +94,7 @@ class XtalSplit extends XtallatX(HTMLElement) {
                 this._s = newVal;
                 break;
             case text_content:
-                this._t = newVal ? this.strip(newVal) : '';
+                this._t = this.strip(newVal);
                 break;
         }
         this.onPropsChange();
@@ -123,8 +123,14 @@ class XtalSplit extends XtallatX(HTMLElement) {
     onPropsChange() {
         if (!this._connected)
             return;
-        if (!this._t)
-            this.textContent = this.strip(this.innerText);
+        if (this._t === undefined) {
+            if (this.firstChild !== null) {
+                this.textContent = this.innerText;
+            }
+            else {
+                return;
+            }
+        }
         if (!this._s) {
             this.innerText = this._t;
         }
