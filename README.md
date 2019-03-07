@@ -15,11 +15,7 @@ xtal-splitting.js is ~1kb minified and gzipped. It takes a search string, and sp
 <custom-element-demo>
   <template>
     <div>
-        <!-- For re(dge)tro browsers -->
-        <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-        <!-- End re(dge)tro browser support-->
-        <script type="module" src="https://unpkg.com/p-d.p-u@0.0.66/p-d.p-u.js"></script>
-        <script type="module" src="https://unpkg.com/xtal-splitting@0.0.5/xtal-splitting.js"></script>
+
       <h3>Basic xtal-splitting demo</h3>
       <style>
         .match{
@@ -28,8 +24,12 @@ xtal-splitting.js is ~1kb minified and gzipped. It takes a search string, and sp
         }
       </style>
       <input type="text"  value="ca">
-      <p-d on="input" to="{search}"></p-d>
-      <xtal-split>supercalifragilisticexpialidocious</xtal-split>
+      <!-- pass down (p-d) input.value to xtal-split's search property -->
+      <p-d on="input" prop="search" val="target.value"></p-d>
+      <xtal-split>superc<span>alifragil</span>isticexpialidocious</xtal-split>
+      <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+      <script type="module" src="https://unpkg.com/p-d.p-u@0.0.105/p-d.js?module"></script>
+      <script type="module" src="https://unpkg.com/xtal-splitting@0.0.9/xtal-split.js?module"></script>
     </div>
   </template>
 </custom-element-demo>

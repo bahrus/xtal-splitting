@@ -1,7 +1,8 @@
 {
   "name": "xtal-splitting",
   "description": "Web components that can do the splits ",
-  "main": "xtal-splitting.js",
+  "main": "xtal-split.js",
+  "module": "xtal-split.js",
   "dependencies": {
     "xtal-element": "0.0.30"
   },
