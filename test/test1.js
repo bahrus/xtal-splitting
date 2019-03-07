@@ -16,4 +16,3 @@ async function customTests(page) {
         path: 'demo/dev.html'
     }, customTests);
 })();
-//# sourceMappingURL=test1.js.map

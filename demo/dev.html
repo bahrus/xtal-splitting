@@ -9,15 +9,8 @@
   <body>
     <div>
       <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-      <script type="module" src="https://unpkg.com/templ-mount@0.0.40/templ-mount.iife.js"></script>
-      <script type="module" src="https://unpkg.com/p-d.p-u@0.0.66/p-d.p-u.js"></script>
-      <template data-activate data-ua="HeadlessChrome|Firefox|Edge">
-          <script type="module" src="../xtal-splitting.js"></script>
-      </template>
-      <template data-activate data-exclude data-ua="HeadlessChrome|Firefox|Edge">
-          <script type="module" src="../xtal-split.js"></script>
-      </template>
-      <templ-mount></templ-mount>
+      <script type="module" src="https://unpkg.com/p-d.p-u@0.0.105/p-d.js?module"></script>
+      <script type="module" src="../xtal-split.js"></script>
       <h3>Basic xtal-splitting demo</h3>
       <style>
         .match{
@@ -26,7 +19,8 @@
         }
       </style>
       <input type="text"  value="ca">
-      <p-d on="input" to="{search}"></p-d>
+      <!-- pass down (p-d) input.value to xtal-split's search property -->
+      <p-d on="input" prop="search" val="target.value"></p-d>
       <xtal-split>superc<span>alifragil</span>isticexpialidocious</xtal-split>
     </div>
   </body>

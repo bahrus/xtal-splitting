@@ -2,7 +2,7 @@
 
 <a href="https://nodei.co/npm/xtal-splitting/"><img src="https://nodei.co/npm/xtal-splitting.png"></a>
 
-<img src="http://img.badgesize.io/https://unpkg.com/xtal-splitting@0.0.8/build/ES6/xtal-splitting.js?compression=gzip">
+<img src="https://badgen.net/bundlephobia/minzip/xtal-splitting">
 
 # \<xtal-splitting\>
 
