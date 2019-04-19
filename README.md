@@ -8,7 +8,7 @@
 
 Web components that can do the splits 
 
-xtal-splitting.js is ~1kb minified and gzipped. It takes a search string, and splits up the textContent into spans, which can be styled to show where the matching text is.
+xtal-splitting.js takes a search string, and splits up the textContent into spans, which can be styled to show where the matching text is.
 
 <!--
 ```

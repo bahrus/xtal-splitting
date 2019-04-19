@@ -1,5 +1,6 @@
 import { XtallatX } from 'xtal-element/xtal-latx.js';
-import { define } from 'xtal-element/define.js';
+import { define } from 'trans-render/define.js';
+import { hydrate, up } from 'trans-render/hydrate.js';
 const search = 'search';
 const text_content = 'text-content';
 const re = /(<([^>]+)>)/ig;
@@ -11,7 +12,7 @@ const re = /(<([^>]+)>)/ig;
  * @polymer
  * @demo demo/index.html
  */
-export class XtalSplit extends XtallatX(HTMLElement) {
+export class XtalSplit extends XtallatX(hydrate(HTMLElement)) {
     static get is() { return 'xtal-split'; }
     static get observedAttributes() {
         return super.observedAttributes.concat([search, text_content]);
@@ -45,7 +46,7 @@ export class XtalSplit extends XtallatX(HTMLElement) {
     }
     connectedCallback() {
         this._connected = true;
-        this._upgradeProperties(['search', 'textContent']);
+        this[up](['search', 'textContent']);
         this.onPropsChange();
     }
     onPropsChange() {
