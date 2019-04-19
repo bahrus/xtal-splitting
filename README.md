@@ -6,9 +6,11 @@
 
 # \<xtal-splitting\>
 
-Web components that can do the splits 
+Web components that can do the splits. 
 
 xtal-splitting.js takes a search string, and splits up the textContent into spans, which can be styled to show where the matching text is.
+
+Demo via [webcomponents.org](https://www.webcomponents.org/element/xtal-splitting)
 
 <!--
 ```
