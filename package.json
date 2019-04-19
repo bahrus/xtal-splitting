@@ -14,7 +14,7 @@
     "tape": "4.10.1",
     "xtal-test": "0.0.10"
   },
-  "version": "0.0.9",
+  "version": "0.0.10",
   "repository": "https://github.com/bahrus/xtal-splitting",
   "author": "bahrus <anderson.bruce.b@gmail.com>",
   "license": "MIT",
