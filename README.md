@@ -15,7 +15,6 @@ xtal-splitting.js takes a search string, and splits up the textContent into span
 <custom-element-demo>
   <template>
     <div>
-
       <h3>Basic xtal-splitting demo</h3>
       <style>
         .match{
@@ -26,10 +25,9 @@ xtal-splitting.js takes a search string, and splits up the textContent into span
       <input type="text"  value="ca">
       <!-- pass down (p-d) input.value to xtal-split's search property -->
       <p-d on="input" prop="search" val="target.value"></p-d>
-      <xtal-split>superc<span>alifragil</span>isticexpialidocious</xtal-split>
-      <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-      <script type="module" src="https://unpkg.com/p-d.p-u@0.0.105/p-d.js?module"></script>
-      <script type="module" src="https://unpkg.com/xtal-splitting@0.0.9/xtal-split.js?module"></script>
+      <xtal-split>supercalifragilisticexpialidocious</xtal-split>
+      <script type="module" src="https://unpkg.com/p-d.p-u@0.0.114/p-d.js?module"></script>
+      <script type="module" src="https://unpkg.com/xtal-splitting@0.0.10/xtal-split.js?module"></script>
     </div>
   </template>
 </custom-element-demo>
